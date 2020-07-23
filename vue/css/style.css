@@ -1,0 +1,502 @@
+@charset "UTF-8";
+/*網頁全共用設定*/
+
+/*css統一管理方式*/
+@import url("bootstrap.min.css");
+@import url("../font-awesome/css/font-awesome4-7.min.css");
+
+
+/*需印刷才引入的css*/
+/*@import "printstyle.css" print;*/
+/*當媒體寬度低於768時，才導入"mobstyle.css"*/
+/*@import "mobstyle.css" screen and (max-width: 768px);*/
+
+
+/*網路字體引用CSS設定*/
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+/*思源黑體 套用名字 Noto Sans TC */
+
+html{
+	overflow-y: scroll;
+	}
+
+html,body {
+	font-family: 'Noto Sans TC','PingFang TC',Microsoft JhengHei,'微軟正黑體',Helvetica,sans-serif;
+	color: #fff;
+	position: relative;
+	width: 100%;
+	min-height: 101vh;
+	font-size: 100%;
+	font-weight: 500;
+	padding: 0 !important;
+	}
+/*font-size:100%是為將網頁字體設定成16px，這個文字大小設定會連動到下面的body的字體設定唷*/
+
+body {
+	overflow-x: hidden;
+	font-size: 62.5%;
+	background: linear-gradient(to top,#FF2634 0%,#901D58 50%,#131380 100%);
+	}					
+/*將全部網頁字體設定成10px大小*/
+/*我們的CSS設定無法蓋過使用者自己的瀏覽器小字體大小，但實質上仍是有被改成功!*/
+/*加入上面的設定，未來每個區塊的字型大小就可以把px除以10，就可得到em單位*/
+/*em單位可讓整體網站較合無障礙，且可變動性較大*/
+
+/*標題*/
+h1,h2,h3,h4,h5,h6{
+	font-size: 1em;
+}
+
+p {
+    margin: 0;
+    color: #333;
+}
+
+h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6 {
+	font-size: 1em;
+    margin: 0 auto;
+	padding: 0;
+}
+
+a:hover, a:focus {
+	text-decoration: none;
+	}	/*超連結統一不要下底線*/
+
+img{
+	backface-visibility:hidden;
+	}	/*圖片更銳利化*/
+
+/* 應用於GIF和PNG圖片; 防止邊緣模糊 */
+img[src$=".gif"], img[src$=".png"] {
+	image-rendering: auto;
+	}
+
+button, a, input:focus,button:focus{
+	outline: none !important;
+	}	/*連結或點擊的按鈕 不顯示外虛線*/
+
+hr {
+	border-top: 1px solid #e1e1e1;
+	clear: both;
+	float: none;
+	margin: 20px 0;
+}	/* 水平線 */
+
+@media(max-width:991px){
+hr {
+	margin: 20px 0;
+}	/* 水平線 */
+}
+
+/*自定義RWD寬度*/
+.WIDTH-5,.WIDTH-5-XS,.WIDTH-5-TABLE,.WIDTH-5-XS-TABLE,.WIDTH-5-INLINEBLOCK,.WIDTH-5-XS-INLINEBLOCK{width:5%;}
+.WIDTH-10,.WIDTH-10-XS,.WIDTH-10-TABLE,.WIDTH-10-XS-TABLE,.WIDTH-10-INLINEBLOCK,.WIDTH-10-XS-INLINEBLOCK{width:10%;}
+.WIDTH-15,.WIDTH-15-XS,.WIDTH-15-TABLE,.WIDTH-15-XS-TABLE,.WIDTH-15-INLINEBLOCK,.WIDTH-15-XS-INLINEBLOCK{width:15%;}
+.WIDTH-20,.WIDTH-20-XS,.WIDTH-20-TABLE,.WIDTH-20-XS-TABLE,.WIDTH-20-INLINEBLOCK,.WIDTH-20-XS-INLINEBLOCK{width:20%;}
+.WIDTH-25,.WIDTH-25-XS,.WIDTH-25-TABLE,.WIDTH-25-XS-TABLE,.WIDTH-25-INLINEBLOCK,.WIDTH-25-XS-INLINEBLOCK{width:25%;}
+.WIDTH-30,.WIDTH-30-XS,.WIDTH-30-TABLE,.WIDTH-30-XS-TABLE,.WIDTH-30-INLINEBLOCK,.WIDTH-30-XS-INLINEBLOCK{width:30%;}
+.WIDTH-35,.WIDTH-35-XS,.WIDTH-35-TABLE,.WIDTH-35-XS-TABLE,.WIDTH-35-INLINEBLOCK,.WIDTH-35-XS-INLINEBLOCK{width:35%;}
+.WIDTH-40,.WIDTH-40-XS,.WIDTH-40-TABLE,.WIDTH-40-XS-TABLE,.WIDTH-40-INLINEBLOCK,.WIDTH-40-XS-INLINEBLOCK{width:40%;}
+.WIDTH-45,.WIDTH-45-XS,.WIDTH-45-TABLE,.WIDTH-45-XS-TABLE,.WIDTH-45-INLINEBLOCK,.WIDTH-45-XS-INLINEBLOCK{width:45%;}
+.WIDTH-50,.WIDTH-50-XS,.WIDTH-50-TABLE,.WIDTH-50-XS-TABLE,.WIDTH-50-INLINEBLOCK,.WIDTH-50-XS-INLINEBLOCK{width:50%;}
+.WIDTH-55,.WIDTH-55-XS,.WIDTH-55-TABLE,.WIDTH-55-XS-TABLE,.WIDTH-55-INLINEBLOCK,.WIDTH-55-XS-INLINEBLOCK{width:55%;}
+.WIDTH-60,.WIDTH-60-XS,.WIDTH-60-TABLE,.WIDTH-60-XS-TABLE,.WIDTH-60-INLINEBLOCK,.WIDTH-60-XS-INLINEBLOCK{width:60%;}
+.WIDTH-65,.WIDTH-65-XS,.WIDTH-65-TABLE,.WIDTH-65-XS-TABLE,.WIDTH-65-INLINEBLOCK,.WIDTH-65-XS-INLINEBLOCK{width:65%;}
+.WIDTH-70,.WIDTH-70-XS,.WIDTH-70-TABLE,.WIDTH-70-XS-TABLE,.WIDTH-70-INLINEBLOCK,.WIDTH-70-XS-INLINEBLOCK{width:70%;}
+.WIDTH-75,.WIDTH-75-XS,.WIDTH-75-TABLE,.WIDTH-75-XS-TABLE,.WIDTH-75-INLINEBLOCK,.WIDTH-75-XS-INLINEBLOCK{width:75%;}
+.WIDTH-80,.WIDTH-80-XS,.WIDTH-80-TABLE,.WIDTH-80-XS-TABLE,.WIDTH-80-INLINEBLOCK,.WIDTH-80-XS-INLINEBLOCK{width:80%;}
+.WIDTH-85,.WIDTH-85-XS,.WIDTH-85-TABLE,.WIDTH-85-XS-TABLE,.WIDTH-85-INLINEBLOCK,.WIDTH-85-XS-INLINEBLOCK{width:85%;}
+.WIDTH-90,.WIDTH-90-XS,.WIDTH-90-TABLE,.WIDTH-90-XS-TABLE,.WIDTH-90-INLINEBLOCK,.WIDTH-90-XS-INLINEBLOCK{width:90%;}
+.WIDTH-100,.WIDTH-100-XS,.WIDTH-100-TABLE,.WIDTH-100-XS-TABLE,.WIDTH-100-INLINEBLOCK,.WIDTH-100-XS-INLINEBLOCK{width:100%;}
+
+.WIDTH-100-TABLE,.WIDTH-100-XS-TABLE{width:1%;}
+
+.WUDTH-AUTO{
+	width:auto;
+}
+
+[class*=WIDTH],[class*=-TABLE],[class*=-INLINEBLOCK]{
+	overflow: hidden;
+	box-sizing: border-box;
+	padding: 0;
+	position: relative;
+    min-height: 1px;
+	margin: 0 auto;
+}
+
+[class*=WIDTH]{
+	float:left;
+	display: block !important;
+}
+
+[class*=-TABLE]{
+	float:none;
+	display: table-cell !important;
+}
+
+[class*=-INLINEBLOCK]{
+	float:none;
+	display: inline-block !important;
+}
+
+@media screen and (max-width: 767px){
+
+.WIDTH-5,.WIDTH-10,.WIDTH-15,.WIDTH-20,.WIDTH-25,.WIDTH-30,.WIDTH-35,.WIDTH-40,
+.WIDTH-45,.WIDTH-50,.WIDTH-55,.WIDTH-60,.WIDTH-65,.WIDTH-70,.WIDTH-75,
+.WIDTH-80,.WIDTH-85,.WIDTH-90,.WIDTH-100,
+	
+.WIDTH-5-TABLE,.WIDTH-10-TABLE,.WIDTH-15-TABLE,.WIDTH-20-TABLE,
+.WIDTH-25-TABLE,.WIDTH-30-TABLE,.WIDTH-35-TABLE,.WIDTH-40-TABLE,
+.WIDTH-45-TABLE,.WIDTH-50-TABLE,.WIDTH-55-TABLE,.WIDTH-60-TABLE,
+.WIDTH-65-TABLE,.WIDTH-70-TABLE,.WIDTH-75-TABLE,.WIDTH-80-TABLE,
+.WIDTH-85-TABLE,.WIDTH-90-TABLE,.WIDTH-95-TABLE,.WIDTH-100-TABLE,
+	
+.WIDTH-5-INLINEBLOCK,.WIDTH-10-INLINEBLOCK,.WIDTH-15-INLINEBLOCK,.WIDTH-20-INLINEBLOCK,
+.WIDTH-25-INLINEBLOCK,.WIDTH-30-INLINEBLOCK,.WIDTH-35-INLINEBLOCK,.WIDTH-40-INLINEBLOCK,
+.WIDTH-45-INLINEBLOCK,.WIDTH-50-INLINEBLOCK,.WIDTH-55-INLINEBLOCK,.WIDTH-60-INLINEBLOCK,
+.WIDTH-65-INLINEBLOCK,.WIDTH-70-INLINEBLOCK,.WIDTH-75-INLINEBLOCK,.WIDTH-80-INLINEBLOCK,
+.WIDTH-85-INLINEBLOCK,.WIDTH-90-INLINEBLOCK,.WIDTH-95-INLINEBLOCK,.WIDTH-100-INLINEBLOCK
+{
+	float: none;
+	width:100%;
+	}
+	
+}
+/*自定義RWD寬度 end*/
+
+.no-padding-margin{
+	padding:0;
+	margin:0;
+	}
+
+.no-padding{
+	padding:0;
+}
+
+.tb-padding-s{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.tb-padding{
+	padding-top:15px;
+	padding-bottom: 15px;
+}
+
+.t-padding-s{
+	padding-top:5px;
+}
+
+.b-padding-s{
+	padding-bottom:5px;
+}
+
+.t-padding{
+	padding-top:15px;
+}
+
+.b-padding{
+	padding-bottom: 15px;
+}
+
+.no-margin{
+	margin:0;
+}
+
+.tb-margin-s{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+.tb-margin{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.t-margin-s{
+	margin-top: 5px;
+}
+
+.b-margin-s{
+	margin-bottom: 5px;
+}
+
+.t-margin{
+	margin-top: 15px;
+}
+
+.b-margin{
+	margin-bottom: 15px;
+}
+
+.d-block{
+	display: block !important;
+}
+
+.d-inline{
+	display: inline !important;
+}
+
+.d-inline-block{
+	display: inline-block !important;
+}
+
+.d-none{
+	display: none !important;
+}
+
+.d-table{
+	display: table !important;
+}
+
+.d-table-cell{
+	display: table-cell;
+	vertical-align: middle;
+	float: none;
+}
+
+.d-nofloat{
+	float: none !important;
+}
+
+.textover-hidde {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: block !important;
+	}	/*區塊文字超出時隱藏*/
+
+.inline-father{
+	font-size:0px;
+	white-space:discard;
+	display:inline-block;
+	}	/*區塊垂直置中必加的父層屬性*/
+
+.div-inline-block{
+	display:inline-block;
+	vertical-align:middle;
+	float:none;
+	zoom:1;
+	font-size:16px;
+	}	/*區塊垂直置中*/
+
+@media screen and (max-width: 767px){
+
+.textover-hidde {
+	overflow: initial;
+	white-space: initial;
+	text-overflow: initial;
+	display: block !important;
+	}	/*手機版 區塊文字超出時不隱藏*/
+
+.textover-hidde-xs {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	display: block !important;
+	}	/*區塊文字超出時隱藏*/
+
+.div-inline-block{
+	display:block;
+	vertical-align:middle;
+	float:none;
+	}	/*手機時 區塊不需垂直置中*/
+	
+.div-inline-block-xs{
+	display:inline-block;
+	vertical-align:middle;
+	float:none;
+	zoom:1;
+	}	/*區塊垂直置中*/
+	
+.d-table-cell{
+	display: block;
+}
+}
+
+/*iframe*/
+iframe{
+	width: 100%;
+	height: auto;
+	border: none;
+}
+
+/*字體大小*/
+.form-text-w-bb,
+.form-text-bb{
+	font-size: 4em !important;
+}
+
+.form-text-w-b,
+.form-text-b{
+	font-size: 2.4em !important;
+}
+
+.form-text-w-mb,
+.form-text-mb{
+	font-size: 1.9em;
+}
+
+.form-text-w-m,
+.form-text-m{
+	font-size: 1.8em !important;
+}
+
+.form-text-w-s,
+.form-text-s{
+	font-size: 1.5em;
+}
+
+.form-text-w-ls,
+.form-text-ls{
+	font-size: 1.3em;
+}
+
+.form-text-w-bb,
+.form-text-bb,
+.form-text-w-b,
+.form-text-b,
+.form-text-w-mb,
+.form-text-mb,
+.form-text-w-m,
+.form-text-m,
+.form-text-w-s,
+.form-text-s,
+.form-text-w-ls,
+.form-text-ls{
+	font-weight: 400;
+}
+
+[class*=form-text-w]{
+	font-weight: bold;
+}
+
+@media(max-width:575px){
+.form-text-w-bb,
+.form-text-bb,
+.form-text-w-b,
+.form-text-b,
+.form-text-w-mb,
+.form-text-mb,
+.form-text-w-m,
+.form-text-m,
+.form-text-w-s,
+.form-text-s,
+.form-text-w-ls,
+.form-text-ls{
+	letter-spacing: -1px;
+}
+}
+
+/*字體顏色*/
+.tcolor-white{
+	color:#fff;
+}
+
+.tcolor-red{
+	color:#FF2E2E;
+}
+
+.tcolor-black{
+	color:#333;
+}
+
+.tcolor-gray{
+	color:#666;
+}
+
+.tcolor-orange{
+	color:#ED7700;
+}
+
+/*基本UI樣式*/
+input,
+select,
+button,
+.btn,
+textarea{
+	color:#000;
+	border: 1px solid #ddd;
+	padding: 10px 15px;
+	font-size: 1.8em;
+	opacity: 1 !important;
+	background: #f4f4f4;
+	border-radius: 0;
+}
+
+.btn{
+
+}
+
+input.noborder,
+select.noborder,
+button.noborder,
+textarea.noborder{
+	border: 0px;
+	color:#666;
+}
+
+/*按鈕*/
+.btn-primary{
+	color: #fff;
+	background-color: #c9302c;
+	border-color: #c9302c;
+	transition: all 0.8s;
+}
+
+.btn-danger{
+	color: #fff;
+	background-color: #ed7700;
+	border-color: #ed7700;
+	transition: all 0.8s;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #ED7700;
+    border-color: #ED7700;
+	transition: all 0.8s;
+}
+
+.btn-success:hover,
+.btn-primary:hover,
+.btn-danger:hover{
+	color: black;
+	background-color: yellow;
+	border-color: black;
+}
+
+/*更改原生樣式*/
+input[type="radio"]{
+	appearance:checkbox;
+	-moz-appearance:checkbox; /* Firefox */
+	-webkit-appearance:checkbox; /* Safari and Chrome */
+}
+
+label,input,input[type="checkbox"],input[type="radio"],input[type="text"]{
+	margin: 0;
+}
+
+/*共用end*/
+
+
+/*框架修改*/
+/*bootstraps 預設修改*/
+.modal{
+	padding: 0 !important;
+}
+
+@media(max-width:1199px){
+.container{
+	width:100%;
+}
+	
+.modal{
+	padding: 0 30px !important;
+}
+}
+
+/*上面設定為一些特殊狀況設定，可再自行修改*/
+/*從這裡為客製 網頁自定義樣式*/
+
+

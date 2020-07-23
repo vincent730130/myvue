@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		v-for 迴圈
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../stylesheets/all.css">
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/regular.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"></script>
+	<script src="../javascripts/vendor.js">
+	</script>
+</head>
+
+<body class="bg-lighter">
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<a class="navbar-brand" href="../index.html">
+			Vue.js 練習手冊
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+			aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon">
+			</span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="../basic/dev.html">
+						基礎教學
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../template/basic.html">
+						模板指令
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../components/basic.html">
+						組件
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../api/vue_set.html">
+						常用 API
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="../es6/let_const.html">
+						ES6
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container my-5">
+		<div class="row">
+
+			<div class="col-md-3">
+				<div>
+					<h6 class="text-capitalize text-muted">
+						template
+					</h6>
+					<a href="../template/basic.html" class="btn btn-block btn-link">
+						基礎模板語法
+					</a>
+					<a href="../template/v_class.html" class="btn btn-block btn-link">
+						切換樣式
+					</a>
+					<a href="../template/v_if.html" class="btn btn-block btn-link">
+						v-if 模板判斷
+					</a>
+					<a href="../template/v_for.html" class="btn btn-block btn-primary active">
+						v-for 迴圈
+					</a>
+					<a href="../template/computed_watch.html" class="btn btn-block btn-link">
+						計算及監聽
+					</a>
+					<a href="../template/form.html" class="btn btn-block btn-link">
+						表單補充介紹
+					</a>
+					<a href="../template/v_on.html" class="btn btn-block btn-link">
+						v-on 事件綁定
+					</a>
+					<a href="../template/homework_sortby.html" class="btn btn-block btn-link">
+						作業練習：表格排序
+					</a>
+				</div>
+			</div>
+
+			<div class="col-md-9 post">
+
+				<!-- 練習開始 -->
+				<h1 class="mt-0 text-muted">
+					v-for 迴圈
+				</h1>
+				<div class="alert alert-secondary">
+					<ol class="mb-0">
+						<li>
+							請跟隨課程完成此章節。
+						</li>
+					</ol>
+				</div>
+
+				<div id="app">
+					<!--1-->
+					<div>
+						<h4>1.在vue裡的for，可以看到綁陣列或是物件都是可以的!</h4>
+						<ul>
+							<li v-for="(item, key) in arrayData">{{ key }} - {{ item.name }} {{ item.age }} 歲</li>
+							<li>這裡是對li用v-for="(item, key) in arrayData</li>
+						</ul>
+
+						<ul>
+							<li v-for="(item, key, index) in objectData">{{ index }} {{ key }} - {{ item.name }}{{ item.age }} 歲</li>
+							<li>這裡是對li用v-for="(item, key) in objectData</li>
+						</ul>
+						<hr>
+					</div>
+
+					<!--2-->
+					<div>
+						<h4>2.Key加入其他dom元素</h4>
+						<p>for對像中還帶有dom時，dom沒有跟著重新排序!</p>
+						<p>這裡請對input輸入1、2、3，然後點擊反轉去看看效果。</p>
+						<p>當li沒有給索引值時(key)，後面的input的這個DOM元素仍不會跟著反轉喔!!</p>
+						<p>可以試著將li的:key="item.age"移除後，對li後面的input輸入1、2、3，然後點擊反轉去看看效果。</p>
+						<ul>
+							<li v-for="(item, key) in arrayData" :key="item.age">{{ key }} - {{ item.name }} {{ item.age }}
+								歲 <input type="text"></li>
+						</ul>
+						<button @click="reverseArray" class="btn btn-outline-primary">反轉陣列</button>
+						<hr>
+					</div>
+
+					<!--3-->
+					<div>
+						<h4>3.Filter</h4>
+						<p>教你如何操作字串比對!</p>
+						<p>類似搜尋的過濾資料。</p>
+						<p>你可以試著輸入arrayData內有的文字，它會去比對有符合的內容，然後跳結果!!</p>
+						<p>目前只針對arrayData內姓名的文字喔!</p>
+						<br>
+						<p>可看filterData這個函式</p>
+
+						<input type="text" class="form-control" v-model="filterText" @keyup.enter="filterData">
+						<ul>
+							<li v-for="(item, key) in filterArray" :key="item.age">{{ key }} - {{ item.name }} {{ item.age }} 歲 <input type="text"></li>
+						</ul>
+						<hr>
+					</div>
+
+					<!--4-->
+					<div>
+						<h4>4.vue-set強制寫入資料</h4>
+						<p>針對陣列不能直接操作值後運作的狀況，vue-set強制寫入資料</p>
+						<p>狀況1.如果你只針對陣列的內容長度(length)做內容的操作是無效的!</p>
+						<p>因為vue就是針對資料綁定，所以除非是更動資料，否則操作陣列長度是無義意的。</p>
+						<p>this.arrayData.length = 0;</p>
+						<p>用console.log去查看陣列，頂多只是length這個屬性值被改成0</p>
+						<p>但陣列資料依然存在喔!</p>
+						<br>
+
+						<p>狀況2.不能透過array的索引值去操作</p>
+						<p>例如我們想把第一筆陣列資料的name改成小強</p>
+						<p>this.arrayData = [0]{name:'小強'}</p>
+						<p>用console.log去查看陣列，雖然值被修改正確，但畫面宣染的內容一樣是先前的小明喔。</p>
+						<br>
+
+						<p>解法:用vue.set，讓資料重新被監控!!</p>
+						<pre>Vue.set(目標資料不用引號,索引值, {<br>	值1:'值',<br>	值2:'值',<br>})
+						</pre>
+						<p>可看cantWork這個函式!</p>
+						<br>
+
+						<button @click="cantWork" class="btn btn-outline-primary">無法運行</button>
+						<ul>
+							<li v-for="(item, key) in arrayData" :key="item.age">{{ key }} - {{ item.name }} {{ item.age }}歲 <input type="text"></li>
+						</ul>
+						<hr>
+					</div>
+
+					<!--5-->
+					<div>
+						<h4>5.純數字的迴圈</h4>
+						<p>對for內的資料直接用數字，表示想跑幾筆資料，v-for="item in 10"</p>
+						<ul>
+							<li v-for="item in 10">{{ item }}</li>
+						</ul>
+						<hr>
+					</div>
+
+					<!--6-->
+					<div>
+						<h4>6.vue內鍵的樣版語法Template 的運用</h4>
+						<p>請將兩個tr一起使用v-for!!</p>
+						<br>
+						<p>vue的快速模版語法template，是不會被輸出的!</p>
+						<p>配合v-for可以快速重覆產生template內的內容，當然筆數是看取得的資料有幾筆!</p>
+						<br>
+
+						<table class="table">
+							<template v-for="(item, key) in arrayData">
+								<tr>
+									<td rowspan="2">{{ key }}</td>
+									<td>{{ item.name }}</td>
+								</tr>
+								<tr>
+									<td>{{ item.age }}</td>
+								</tr>
+							</template>
+						</table>
+						<hr>
+					</div>
+
+					<!--7-->
+					<div>
+						<h4>v-for 與 v-if</h4>
+						<p>當v-for與v-if同時出現在同一DOM上時，vue會先執行v-for，跑完迴圈後才會再執行if的判斷式!</p>
+						<ul>
+							<li v-for="(item, key) in arrayData" v-if="item.age <= 20">{{ key }} - {{ item.name }}
+								{{ item.age }} 歲</li>
+						</ul>
+						<hr>
+					</div>
+
+					<!--8-->
+					<div>
+						<h4>v-for 與 元件</h4>
+						<p>就是自定義的元件中，替它加入key值!</p>
+						<p>:key="item.age"</p>
+						<ul>
+							<list-item :item="item" v-for="(item, key) in arrayData" :key="item.age"></list-item>
+						</ul>
+						<p>注意：現在建議元件使用 v-for 都加上 key。<a href="https://cn.vuejs.org/v2/guide/list.html#%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6%E7%9A%84-v-for">參考</a>
+						</p>
+						<hr>
+					</div>
+
+				</div>
+
+				<script>
+					Vue.component('list-item', {
+						template: `
+							<li>
+							{{ item.name }} {{ item.age }} 歲
+							</li>
+						`,
+						props: ['item']
+					});
+
+					var app = new Vue({
+						el: '#app',
+						data: {
+							arrayData: [
+								{
+									name: '1小明',
+									age: 16
+								},
+								{
+									name: '11漂亮阿姨',
+									age: 24
+								},
+								{
+									name: '111杰倫',
+									age: 20
+								}
+							],
+							objectData: {
+								ming: {
+									name: '小明',
+									age: 16
+								},
+								auntie: {
+									name: '漂亮阿姨',
+									age: 24
+								},
+								jay: {
+									name: '杰倫',
+									age: 20
+								}
+							},
+							filterArray: [],
+							filterText: ''
+						},
+						methods: {
+							reverseArray: function () {
+								this.arrayData.reverse()
+								console.log(this.arrayData)
+							},
+							filterData: function () {
+								var vm = this;
+								//這裡用了一個filter()這個涵式是原生JS的，當它對arrayData篩選完後的值，會重新塞入值到item，然後再返還給filterArray
+								vm.filterArray = vm.arrayData.filter(function (item) {
+									console.log(vm.filterText, item.name, item.name.match(vm.filterText))
+									return item.name.match(vm.filterText);
+								});
+							},
+							cantWork: function () {
+								// // 情境一
+								// this.arrayData.length = 2;
+								// // 情境二
+								// this.arrayData[0] = {
+								//   name: '阿強',
+								//   age: 99
+								// }
+								//解法
+								//Vue.set(目標資料不用引號,索引值, {
+								//值1:'值',
+								//值2:'值',
+								//})
+								Vue.set(this.arrayData, 0, {
+								  name: '阿強',
+								  age: 99
+								})
+								console.log(this.arrayData)
+							}
+						}
+					});
+				</script>
+
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
